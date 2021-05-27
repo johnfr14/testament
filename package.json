@@ -1,0 +1,8 @@
+{
+  "name": "Testament",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/RaphaelHardFork/excercices-solidity-ethereum2.git",
+  "author": "johnfr14 <jonathan.alyra@gmail.com>",
+  "license": "MIT"
+}
