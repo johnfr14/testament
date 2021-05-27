@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-solhint');
 
