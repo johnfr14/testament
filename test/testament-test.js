@@ -6,7 +6,9 @@ describe("testament", () => {
   let dev, doctor, owner, alice, Testament, testament;
 
   beforeEach(async function () {
+    // eslint-disable-next-line no-undef
     [dev, doctor, owner, alice] = await ethers.getSigners();
+    // eslint-disable-next-line no-undef
     Testament = await ethers.getContractFactory('Testament');
     testament = await Testament.connect(dev).deploy(owner.address, doctor.address);
     await testament.deployed();
@@ -14,6 +16,7 @@ describe("testament", () => {
 
   describe('Deployment', function () {
     it("revert if the owner and doctor is the same person", async function () {
+      // eslint-disable-next-line no-undef
       const Testament2 = await ethers.getContractFactory('Testament');
       await expect(Testament2.connect(dev).deploy(owner.address, owner.address))
         .to.revertedWith("Testament: You cannot define the owner and the doctor as the same person.");
@@ -106,7 +109,7 @@ describe("testament", () => {
     it("should send the money to the heir and empty the _legacy balance", async function () {
       await testament.connect(owner).bequeath(alice.address, { value: 1000 });
       await testament.connect(doctor).contractEnd();
-      //await testament.connect(alice).withdraw();
+      // await testament.connect(alice).withdraw();
       await expect(() => testament.connect(alice).withdraw())
         .to.changeEtherBalance(alice, 1000);
       expect(await testament.legacyOf(alice.address)).to.equal(0);

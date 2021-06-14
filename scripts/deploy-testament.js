@@ -1,8 +1,8 @@
 const chalk = require('chalk');
-const hre = require('hardhat')
+const hre = require('hardhat');
 const fsPromises = require('fs/promises');
 
-async function main() {
+async function main () {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
   //
@@ -11,12 +11,13 @@ async function main() {
   // await hre.run('compile');
 
   // Optionnel car l'account deployer est utilisé par défaut
+  // eslint-disable-next-line no-undef
   const [deployer] = await ethers.getSigners();
   console.log('Deploying contracts with the account:', deployer.address);
 
   // Calculator deployment
-  const Testament = await hre.ethers.getContractFactory('Testament')
-  const testament = await Testament.deploy(deployer.address, "0xDb9725dB6E6CfbcFe47CC1D174B2E62993a533f4");
+  const Testament = await hre.ethers.getContractFactory('Testament');
+  const testament = await Testament.deploy(deployer.address, '0xDb9725dB6E6CfbcFe47CC1D174B2E62993a533f4');
 
   await testament.deployed();
 
